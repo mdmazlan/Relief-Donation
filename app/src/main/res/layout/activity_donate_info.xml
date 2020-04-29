@@ -73,6 +73,8 @@
         android:id="@+id/btn_location_pick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:textSize="15sp"
         android:text="@string/donate_location" />
 
     <TextView
@@ -80,6 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Lat Long"
+        android:background="#EFEFEF"
         android:gravity="center"
         android:layout_marginTop="20dp"
         android:textSize="20sp"/>
@@ -88,6 +91,8 @@
         android:id="@+id/tv_pick_address_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#EFEFEF"
         android:gravity="center"
         android:text="Address"
         android:textSize="20sp"/>
@@ -101,8 +106,8 @@
         android:layout_marginTop="100dp"
         android:layout_marginRight="5dp"
         android:layout_gravity="center"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textAllCaps="false"
-        android:ems="20"
+        android:ems="10"
         android:text="@string/submit" />
 </LinearLayout>

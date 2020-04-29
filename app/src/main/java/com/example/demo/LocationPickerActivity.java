@@ -281,9 +281,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
                 Toast.makeText(LocationPickerActivity.this, "Location Not Available..", Toast.LENGTH_SHORT).show();
 
             } else {
-                // Start location request listener.
-                //Location will be received onLocationResult()
-                //Once loc recvd, updateListener will be turned OFF.
+
                 Toast.makeText(this, "Fetching Location...", Toast.LENGTH_LONG).show();
                 startLocationUpdates();
 

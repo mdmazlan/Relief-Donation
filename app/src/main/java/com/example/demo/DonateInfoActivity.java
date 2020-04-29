@@ -106,6 +106,34 @@ public class DonateInfoActivity extends AppCompatActivity implements View.OnClic
     }
 
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == ADDRESS_PICKER_REQUEST) {
+            try {
+                if (data != null && data.getStringExtra(MapUtility.ADDRESS) != null) {
+                    String address = data.getStringExtra(MapUtility.ADDRESS);
+                    double currentLatitude = data.getDoubleExtra(MapUtility.LATITUDE, 0.0);
+                    double currentLongitude = data.getDoubleExtra(MapUtility.LONGITUDE, 0.0);
+                    txt_latlong_v.setText("Lat:"+currentLatitude+"  Long:"+currentLongitude);
+                    txt_address_v.setText("Address: "+address);
+
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+
+
+
+
+
+
+
     private void addDonateInfo(){
         String phone = edPhn.getText().toString().trim();
         String effort = spinnerEffort.getSelectedItem().toString();
