@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -19,6 +20,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class DonateInfoActivity extends AppCompatActivity {
+
+
     // variables
     EditText edPhn, edAmount,edDate;
     Spinner spinnerEffort, spinnerAmount;
@@ -29,10 +32,20 @@ public class DonateInfoActivity extends AppCompatActivity {
     int y,m,d;
     String donateDate;
 
+    // variables pick location part
+
+    private TextView txt_latlong_v;
+    private TextView txt_address_v;
+    private static final int ADDRESS_PICKER_REQUEST = 1020;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donate_info);
+
+
 
         //hooks
         edPhn = findViewById(R.id.edPhn);
