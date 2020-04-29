@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Demo</string>
+    <string name="app_name">Relief Donation</string>
     <string name="google_map_api">AIzaSyA14vuMv60UpmkIfd6H53VnmFk6cV1WtTI</string>
     <string name="google_place_api">AIzaSyDNzoRTXpXdxdW7U4GLlnmKSZzGVHp6NJk</string>
 
