@@ -3,6 +3,7 @@ package com.example.demo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -19,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class DonateInfoActivity extends AppCompatActivity {
+public class DonateInfoActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     // variables
@@ -44,6 +45,12 @@ public class DonateInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donate_info);
+
+        MapUtility.apiKey = getResources().getString(R.string.google_place_api);
+        findViewById(R.id.btn_location_pick).setOnClickListener(this);
+
+        txt_latlong_v = findViewById(R.id.tv_pick_latlong_id);
+        txt_address_v = findViewById(R.id.tv_pick_address_id);
 
 
 
@@ -87,6 +94,17 @@ public class DonateInfoActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_location_pick:
+                Intent intent = new Intent(DonateInfoActivity.this, LocationPickerActivity.class);
+                startActivityForResult(intent, ADDRESS_PICKER_REQUEST);
+                break;
+        }
+    }
+
 
     private void addDonateInfo(){
         String phone = edPhn.getText().toString().trim();
