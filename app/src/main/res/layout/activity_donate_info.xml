@@ -55,8 +55,6 @@
             android:entries="@array/amount" />
 
 
-
-
     </LinearLayout>
 
     <EditText

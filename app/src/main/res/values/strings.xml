@@ -14,6 +14,10 @@
     <string name="month">Month</string>
     <string name="week">Week</string>
     <string name="day">Day</string>
+    <string name="donate_info">Donate Info</string>
+    <string name="search_location">Search Location</string>
+    <string name="directions">directions</string>
+    <string name="google_map">google_map</string>
 
     <!-- Radio  End -->
 

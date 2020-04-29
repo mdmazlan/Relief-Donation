@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="match_parent"
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -13,28 +14,26 @@
     <TextView
         android:id="@+id/imgSearch"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginBottom="40dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/white_rounded_corner"
         android:drawableEnd="@drawable/ic_search_black"
         android:drawableStart="@drawable/ic_place_red"
         android:drawablePadding="8dp"
         android:gravity="start|center_vertical"
-        android:hint="Search Location"
+        android:hint="@string/search_location"
         android:maxLines="2"
         android:paddingBottom="5dp"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
+        android:paddingStart="15sp"
+        android:paddingEnd="15sp"
         android:paddingTop="5dp"
-        android:textColor="@color/colorPrimary"
-        android:textColorHint="@color/colorPrimary"
+        android:textColor="#595959"
+        android:textColorHint="#595959"
         android:textCursorDrawable="@null"
-        android:textSize="14sp"
-        android:drawableRight="@drawable/ic_search_black"
-        android:drawableLeft="@drawable/ic_place_red" />
+        android:textSize="16sp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_select_location"
@@ -45,8 +44,7 @@
         android:layout_marginStart="8dp"
         app:srcCompat="@drawable/ic_done_white_24dp"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="8dp"
-        android:layout_alignParentLeft="true" />
+        tools:ignore="VectorDrawableCompat" />
 
 
     <ImageView
@@ -61,7 +59,8 @@
         app:srcCompat="@drawable/ic_my_location_black_24dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="18dp"
-        android:contentDescription="Search Location" />
+        android:contentDescription="@string/search_location"
+        tools:ignore="VectorDrawableCompat" />
 
 
     <ImageView
@@ -77,7 +76,7 @@
         app:srcCompat="@drawable/ic_directions_blue_24dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="102dp"
-        android:contentDescription="directions" />
+        android:contentDescription="@string/directions" />
 
 
     <ImageView
@@ -93,7 +92,7 @@
         android:padding="8dp"
         android:layout_alignLeft="@+id/direction_tool"
         android:layout_marginLeft="40dp"
-        android:contentDescription="google_map" />
+        android:contentDescription="@string/google_map" />
 
 
 
