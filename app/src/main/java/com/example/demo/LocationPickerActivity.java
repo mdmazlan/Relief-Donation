@@ -111,8 +111,6 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
         ImageView imgCurrentloc = findViewById(R.id.imgCurrentloc);
         FloatingActionButton txtSelectLocation = findViewById(R.id.fab_select_location);
         imgSearch = findViewById(R.id.imgSearch);
-        ImageView directionTool = findViewById(R.id.direction_tool);
-        ImageView googleMapTool = findViewById(R.id.google_maps_tool);
 
         //intitalization of FusedLocationProviderClient
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -224,24 +222,6 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
             }
         });
 
-        directionTool.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LocationPickerActivity.this.showCurrentLocationOnMap(true);
-                doAfterPermissionProvided = 3;
-                doAfterLocationSwitchedOn = 3;
-            }
-        });
-
-        googleMapTool.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Default google map
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(
-                        "http://maps.google.com/maps?q=loc:" + mLatitude + ", " + mLongitude + ""));
-                LocationPickerActivity.this.startActivity(intent);
-            }
-        });
 
     }
 
@@ -512,7 +492,8 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
             //format will be lat,lng i.e 19.23234,72.65465
             if (latLongPattern.matcher(userAddress).matches()) {
 
-                Pattern p = Pattern.compile("(-?\\d+(\\.\\d+)?)");   // the pattern to search for
+                Pattern p = Pattern.compile("(-?\\d+(\\.\\d+)?)");
+                // the pattern to search for
                 Matcher m = p.matcher(userAddress);
 
                 // if we find a match, get the group
@@ -542,7 +523,6 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
                     addMarker();
                 }
             }
-
     }
 
     @Override
@@ -560,6 +540,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
         switch (item.getItemId()) {
             case android.R.id.home:
                 // app icon in action bar clicked; goto parent activity.
+
                 this.finish();
                 return true;
             default:
@@ -701,6 +682,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
                 geocoder = new Geocoder(LocationPickerActivity.this, Locale.getDefault());
 
                 //get location from lat long if address string is null
+
                 addresses = geocoder.getFromLocationName(userAddress[0], 1);
 
                 if (addresses != null && addresses.size() > 0) {
@@ -720,8 +702,8 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
             MapUtility.hideProgress();
             addMarker();
         }
-    }
 
+    }
 
     double roundAvoid(double value) {
         double scale = Math.pow(10, 6);
@@ -756,9 +738,9 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
     @Override
     protected void onResume() {
         super.onResume();
-        //Do tasks for which permission was granted by user in onRequestPermission()
+
         if (!isFinishing() && mLocationPermissionGranted) {
-            // perform action required b4 asking permission
+
             mLocationPermissionGranted = false;
             switch (doAfterPermissionProvided) {
                 case 1:
@@ -802,15 +784,14 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
                         }
                     }
                 });
-
     }
 
     private void getLocationRequest() {
+
         locationRequest = new LocationRequest();
         locationRequest.setInterval(10000);
         locationRequest.setFastestInterval(3000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
-
 }
 

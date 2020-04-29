@@ -3,9 +3,13 @@ package com.example.demo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.ContextMenu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -13,6 +17,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -51,6 +56,8 @@ public class DonateInfoActivity extends AppCompatActivity implements View.OnClic
 
         txt_latlong_v = findViewById(R.id.tv_pick_latlong_id);
         txt_address_v = findViewById(R.id.tv_pick_address_id);
+        registerForContextMenu(txt_latlong_v);
+
 
 
 
@@ -84,8 +91,6 @@ public class DonateInfoActivity extends AppCompatActivity implements View.OnClic
             }
         });
 
-
-
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,7 +122,7 @@ public class DonateInfoActivity extends AppCompatActivity implements View.OnClic
                     String address = data.getStringExtra(MapUtility.ADDRESS);
                     double currentLatitude = data.getDoubleExtra(MapUtility.LATITUDE, 0.0);
                     double currentLongitude = data.getDoubleExtra(MapUtility.LONGITUDE, 0.0);
-                    txt_latlong_v.setText("Lat:"+currentLatitude+"  Long:"+currentLongitude);
+                    txt_latlong_v.setText("Lat: "+currentLatitude+" \n Long: "+currentLongitude);
                     txt_address_v.setText("Address: "+address);
 
                 }
