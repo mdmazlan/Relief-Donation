@@ -1,15 +1,9 @@
 package com.example.demo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.ContextMenu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -18,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -49,6 +44,8 @@ public class DonateInfoActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Fill Information");
+
         setContentView(R.layout.activity_donate_info);
 
         MapUtility.apiKey = getResources().getString(R.string.google_place_api);
@@ -91,6 +88,7 @@ public class DonateInfoActivity extends AppCompatActivity implements View.OnClic
             }
         });
 
+
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,8 +108,7 @@ public class DonateInfoActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-
-
+    //
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -132,13 +129,6 @@ public class DonateInfoActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-
-
-
-
-
-
-
     private void addDonateInfo(){
         String phone = edPhn.getText().toString().trim();
         String effort = spinnerEffort.getSelectedItem().toString();
@@ -157,7 +147,7 @@ public class DonateInfoActivity extends AppCompatActivity implements View.OnClic
             Toast.makeText(this,"Info Added",Toast.LENGTH_SHORT).show();
         }
         else{
-            Toast.makeText(this,"You should enter a Phn number",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Please enter your Phone number",Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -43,9 +43,9 @@
         android:layout_below="@+id/imgSearch"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="18dp"
-        android:background="#9FFFFFFF"
+        android:background="@drawable/round_shape_location"
         android:padding="8dp"
-        app:srcCompat="@drawable/ic_my_location_black_24dp"
+        app:srcCompat="@drawable/ic_my_location"
         android:contentDescription="@string/search_location"
         tools:ignore="VectorDrawableCompat" />
 

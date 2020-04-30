@@ -1,11 +1,5 @@
 package com.example.demo;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -26,6 +20,12 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
@@ -69,7 +69,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-
 public class LocationPickerActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private static final int REQUEST_CHECK_SETTINGS = 2;
@@ -106,11 +105,14 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
         setContentView(R.layout.activity_location_picker);
 
 
-        if(getSupportActionBar()!=null)
+        if (getSupportActionBar() != null)
             getSupportActionBar().hide();
+
+
+        imgSearch = findViewById(R.id.imgSearch);
         ImageView imgCurrentloc = findViewById(R.id.imgCurrentloc);
         FloatingActionButton txtSelectLocation = findViewById(R.id.fab_select_location);
-        imgSearch = findViewById(R.id.imgSearch);
+
 
         //intitalization of FusedLocationProviderClient
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -155,6 +157,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
         // Try to obtain the map from the SupportMapFragment.
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         //if you want to open the location on the LocationPickerActivity through intent
         Intent i = getIntent();
         if (i != null) {
@@ -184,7 +187,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
             @Override
             public void onClick(View view) {
                 if (!com.google.android.libraries.places.api.Places.isInitialized()) {
-                    Places.initialize(LocationPickerActivity.this.getApplicationContext(),MapUtility.apiKey);
+                    Places.initialize(LocationPickerActivity.this.getApplicationContext(), MapUtility.apiKey);
                 }
 
                 // Set the fields to specify which types of place data to return.
@@ -221,7 +224,6 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
                 doAfterLocationSwitchedOn = 2;
             }
         });
-
 
     }
 

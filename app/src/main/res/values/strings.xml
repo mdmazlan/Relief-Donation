@@ -5,7 +5,7 @@
 
     <string name="enter_phone_number">Enter Phone Number</string>
     <string name="number_of_amount">Number Of Amount</string>
-    <string name="enter_donate_date">Enter Donate Date</string>
+    <string name="donate_date">Donate Date</string>
     <string name="Pick_location">Pick Location</string>
     <string name="submit">Submit</string>
 
