@@ -1,12 +1,14 @@
 package com.example.demo;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentTransaction;
@@ -23,21 +25,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
-    // variables
-    Button btnDonate;
+    //-- picker
+    private final int PICKER_REQUEST_CODE = 1;
 //    SupportMapFragment supportMapFragment;
 //    FusedLocationProviderClient client;
-
+    private final int AUTOCOMPLETE_REQUEST_CODE = 2;
+    // variables
+    Button btnDonate;
     private GoogleMap gMap;
     private GoogleMapOptions gMapOptions;
     private List<MarkerItem> markerItems = new ArrayList<>();
     private ClusterManager<MarkerItem> clusterManager;
-
-    //-- picker
-    private final int PICKER_REQUEST_CODE = 1;
-    private final int AUTOCOMPLETE_REQUEST_CODE = 2;
     //--
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +108,36 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             return;
         }
         gMap.setMyLocationEnabled(true);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        new AlertDialog.Builder(this)
+                .setTitle("Message")
+                .setMessage("Do you want to exit app?")
+                .setNegativeButton("NO", null)
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        MainActivity.super.onBackPressed();
+                    }
+                }).create().show();
+
+        // Another Code for another way ...............................
+
+        /*
+        public void onBackPressed(){
+
+        backpress = (backpress + 1);
+        Toast.makeText(getApplicationContext(), "Press Back again to Exit", Toast.LENGTH_SHORT).show();
+        if (backpress>1) {
+        this.finish();
+        }}
+
+        */
 
     }
 }
